@@ -3,8 +3,8 @@ databases:
   - databasename: helpjuice_test_backend_production 
 
 services:
-  - type: helpjuice_test_backend_production
-    name: mysite
+  - type: web
+    name: helpjuice_test_backend_production
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
