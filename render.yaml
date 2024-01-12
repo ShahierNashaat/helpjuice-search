@@ -1,6 +1,6 @@
 databases:
   - name: helpjuice_test_backend_production
-  - databasename: helpjuice_test_backend_production 
+    databasename: helpjuice_test_backend_production 
 
 services:
   - type: web
