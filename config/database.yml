@@ -82,4 +82,3 @@ test:
 production:
   <<: *default
   database: helpjuice_test_backend_production
-  url: <%= ENV['DATABASE_URL']
