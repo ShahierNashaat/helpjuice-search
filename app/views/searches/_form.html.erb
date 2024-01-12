@@ -1,0 +1,37 @@
+<%= form_with(model: search) do |form| %>
+  <% if search.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(search.errors.count, "error") %> prohibited this search from being saved:</h2>
+
+      <ul>
+        <% search.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :search_text %>
+    <%= form.text_field :search_text, onkeyup: "save_search(event)" %>
+  </div>
+
+<% end %>
+
+<ul id="trendings">
+  <% @trendings.each do |item| %>
+    <li><%= item.search_text %> - <%= item.search_numbers %></li>
+  <% end %>
+</ul>
+
+<script>
+  const save_search = async (e) => {
+    const response = await fetch("/searches/save_search", {method: 'POST', body: e.target.value});
+    const search_results = await response.json();
+    list_str = '';
+    search_results.searchs.forEach(element => {
+      list_str += `<li>${element.search_text} - ${element.search_numbers}</li>`;
+    });
+    document.getElementById("trendings").innerHTML = list_str
+  }
+</script>
