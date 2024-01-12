@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: helpjuice_test_backend_production
-  username: helpjuice_test_backend
-  password: <%= ENV['HELPJUICE_TEST_BACKEND_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL']
